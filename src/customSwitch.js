@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, StyleSheet, Text, TouchableWithoutFeedback, Animated, LayoutAnimation } from 'react-native';
+import { View, StyleSheet, Text, TouchableWithoutFeedback, Animated, LayoutAnimation, Platform, UIManager } from 'react-native';
 
 import hexToRgb from './hexToRgb';
 
@@ -186,11 +186,10 @@ export default function CustomSwitch({
     }}>
       <Animated.View style={toggleStyle}>
         {(switchLeftText && toggleRight)
-          ? 
+          && 
             <View style={{width: toggleStyle.width - buttonStyle.width - toggleStyle.padding*2}}>
               <Text style={[styles.switchText, switchLeftTextStyle]}>{switchLeftText}</Text>
             </View>
-          : null
         }
         <View style={[styles.button, buttonStyle]}>
           {(buttonText && onSwitchButtonText)
@@ -205,11 +204,10 @@ export default function CustomSwitch({
           } 
         </View>
         {(switchRightText && !toggleRight)
-          ? 
+          && 
             <View style={{width: toggleStyle.width - buttonStyle.width - toggleStyle.padding*2}}>
               <Text style={[styles.switchText, switchRightTextStyle]}>{switchRightText}</Text>
             </View>
-          : null
         }
       </Animated.View>
     </TouchableWithoutFeedback>
