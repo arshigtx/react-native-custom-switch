@@ -2,7 +2,7 @@
   "name": "react-native-custom-switch",
   "version": "1.0.3",
   "description": "A fully customizable switch component for react native.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
