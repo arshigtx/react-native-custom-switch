@@ -31,7 +31,8 @@ export default function CustomSwitch({
   onSwitchButtonTextStyle,
   onSwitchBackgroundColor,
   animationSpeed,
-  startOnLeft, 
+  startOnLeft,
+  disabled, 
 }) {
   
   const [ toggleRight, setToggleRight ] = useState(startOnLeft === true ? true : false);
@@ -178,8 +179,10 @@ export default function CustomSwitch({
 
   return (
     <TouchableWithoutFeedback onPress={() => {
-      changeToggle();
-      layoutAnim.Opacity();
+      !disabled ? (
+        changeToggle(),
+        layoutAnim.Opacity()
+       ) : null
     }}>
       <Animated.View style={toggleStyle}>
         {(switchLeftText && toggleRight)
