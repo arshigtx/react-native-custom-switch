@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, Text, TouchableWithoutFeedback, Animated, LayoutAnimation } from 'react-native';
 
-import hexToRgb from './utils';
+import hexToRgb from './hexToRgb';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -16,12 +16,20 @@ export default function CustomSwitch({
   buttonBorderWidth,
   buttonBorderColor,
   buttonText,
+  buttonTextStyle,
   switchWidth,
   switchBackgroundColor,
+  switchBorderWidth,
+  switchBorderColor,
+  switchLeftText,
+  switchLeftTextStyle,
+  switchRightText,
+  switchRightTextStyle,
   onSwitchRight,
   onSwitchLeft,
   onSwitchButtonText,
-  onswitchBackgroundColor,
+  onSwitchButtonTextStyle,
+  onSwitchBackgroundColor,
   animationSpeed,
   startOnLeft, 
 }) {
@@ -29,11 +37,11 @@ export default function CustomSwitch({
   const [ toggleRight, setToggleRight ] = useState(startOnLeft === true ? true : false);
 
   const colorAnim = useRef(new Animated.Value(0)).current;
-  const colorAnimInterpolation = onswitchBackgroundColor && useRef(colorAnim.interpolate({
+  const colorAnimInterpolation = onSwitchBackgroundColor && useRef(colorAnim.interpolate({
     inputRange: [0, 1],
     outputRange:[
       switchBackgroundColor ? hexToRgb(switchBackgroundColor) : hexToRgb('#BBD8B3'), 
-      hexToRgb(onswitchBackgroundColor)
+      hexToRgb(onSwitchBackgroundColor)
     ]
   })).current;
 
@@ -80,9 +88,8 @@ export default function CustomSwitch({
     } else if (onSwitchLeft) {
       onSwitchLeft()
     }
-    if (onswitchBackgroundColor) {
+    if (onSwitchBackgroundColor) {
       changeColor();
-      console.log(colorAnimInterpolation);
     }
   },[toggleRight])
 
@@ -130,6 +137,19 @@ export default function CustomSwitch({
   }
 
   const toggleStyle = {
+    flexDirection: (switchLeftText || switchRightText) ? 'row' : null,
+    justifyContent: switchLeftText
+      ? 'space-between' 
+        : (switchRightText && !switchLeftText)
+        ? toggleRight 
+          ? 'flex-end' 
+            : 'space-between'
+      : null,
+    alignItems: (!switchLeftText && !switchRightText) 
+      ? toggleRight 
+      ? 'flex-end' 
+        : 'flex-start'
+      : 'center',
     width: buttonWidth && !switchWidth 
       ? buttonWidth*2
       : (buttonWidth) >= switchWidth*0.75
@@ -137,13 +157,14 @@ export default function CustomSwitch({
         : switchWidth
           ? switchWidth
       : defaultValues.switch.size.width,
-    backgroundColor: onswitchBackgroundColor 
+    backgroundColor: onSwitchBackgroundColor 
       ? colorAnimInterpolation
-      : switchBackgroundColor && !onswitchBackgroundColor 
+      : switchBackgroundColor && !onSwitchBackgroundColor 
         ? switchBackgroundColor
       : defaultValues.switch.color.backgroundColor,
+    borderWidth: switchBorderWidth ? switchBorderWidth : 0,
+    borderColor: switchBorderColor ? switchBorderColor : null,
     padding: buttonPadding ? buttonPadding : defaultValues.button.padding,
-    alignItems: toggleRight ? 'flex-end' : 'flex-start',
     borderRadius: (buttonWidth && buttonPadding) 
       ? (buttonWidth + (buttonPadding/2))*2
       : (buttonWidth && !buttonPadding)
@@ -161,18 +182,32 @@ export default function CustomSwitch({
       layoutAnim.Opacity();
     }}>
       <Animated.View style={toggleStyle}>
+        {(switchLeftText && toggleRight)
+          ? 
+            <View style={{width: toggleStyle.width - buttonStyle.width - toggleStyle.padding*2}}>
+              <Text style={[styles.switchText, switchLeftTextStyle]}>{switchLeftText}</Text>
+            </View>
+          : null
+        }
         <View style={[styles.button, buttonStyle]}>
           {(buttonText && onSwitchButtonText)
             ? toggleRight 
-              ? <Text>{onSwitchButtonText}</Text>
-              : <Text>{buttonText}</Text>
+              ? <Text style={onSwitchButtonTextStyle}>{onSwitchButtonText}</Text>
+              : <Text style={buttonTextStyle}>{buttonText}</Text>
             : (onSwitchButtonText && !buttonText && toggleRight)
-              ? <Text>{onSwitchButtonText}</Text>
+              ? <Text style={onSwitchButtonTextStyle}>{onSwitchButtonText}</Text>
               : buttonText 
-                ? <Text>{buttonText}</Text>
+                ? <Text style={buttonTextStyle}>{buttonText}</Text>
             : null
           } 
         </View>
+        {(switchRightText && !toggleRight)
+          ? 
+            <View style={{width: toggleStyle.width - buttonStyle.width - toggleStyle.padding*2}}>
+              <Text style={[styles.switchText, switchRightTextStyle]}>{switchRightText}</Text>
+            </View>
+          : null
+        }
       </Animated.View>
     </TouchableWithoutFeedback>
   )
@@ -181,7 +216,10 @@ export default function CustomSwitch({
 const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+  switchText: {
+    textAlign: 'center',
   }
 })
 
