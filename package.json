@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/arshigtx/react-native-custom-switch/issues"
   },
-  "homepage": "https://github.com/arshigtx/react-native-custom-switch#readme"
+  "homepage": "https://github.com/arshigtx/react-native-custom-switch#readme",
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.68.0"
+  }
 }
