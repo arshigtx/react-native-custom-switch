@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# React-Native-Custom-Switch
-=======
 # React-Native-Custom-Switch
 A lightweight, fully customizable switch component for React Native.
 
@@ -14,7 +11,6 @@ npm install react-native-custom-switch
 ## Usage
 ```jsx
 import CustomSwitch from 'react-native-custom-switch';
-
 <CustomSwitch />
 ```
 
@@ -108,4 +104,3 @@ onSwitchBackgroundColor | Adjusts the background color of the switch when the sw
 animationSpeed | Adjuts the speed of the animation when the switch is pressed.  | ```animationSpeed={50}``` | ```150``` | 
 startOnLeft | Changes the start position of the switch to the right side. | ```startOnLeft={true}``` | ```false``` |
 disabled | Prevents the switch from being pressed. | ```disabled={true}``` | ```false``` |
->>>>>>> 95632be57b75bb06d29746bbf0a27b7778d97d2d
