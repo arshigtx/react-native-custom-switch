@@ -25,8 +25,8 @@ export default function CustomSwitch({
   switchLeftTextStyle,
   switchRightText,
   switchRightTextStyle,
-  onSwitchRight,
-  onSwitchLeft,
+  onSwitch,
+  onSwitchReverse,
   onSwitchButtonText,
   onSwitchButtonTextStyle,
   onSwitchBackgroundColor,
@@ -84,10 +84,10 @@ export default function CustomSwitch({
   }
 
   useEffect(() => {
-    if (toggleRight && onSwitchRight) {
-      onSwitchRight();
-    } else if (onSwitchLeft) {
-      onSwitchLeft()
+    if (toggleRight && onSwitch) {
+      onSwitch();
+    } else if (!toggleRight && onSwitchReverse) {
+      onSwitchReverse()
     }
     if (onSwitchBackgroundColor) {
       changeColor();
@@ -100,9 +100,9 @@ export default function CustomSwitch({
         width: 20,
         height: 20,
       },
-      padding: 3,
+      padding: 0,
       color: {
-        backgroundColor: '#F3B61F'
+        backgroundColor: '#FFFFFF'
       }
     },
     switch: {
@@ -110,7 +110,7 @@ export default function CustomSwitch({
         width: 50,
       },
       color: {
-        backgroundColor: '#BBD8B3'
+        backgroundColor: '#D4EDE1'
       }
     },
     animationSpeed: 150
