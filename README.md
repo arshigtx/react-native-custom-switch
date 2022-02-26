@@ -1,1 +1,1 @@
-# React-Native-Toggle-Element
+# React-Native-Custom-Switch
