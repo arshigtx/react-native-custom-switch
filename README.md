@@ -67,10 +67,8 @@ Provide a callback function to ```onSwitch()``` which will be called when the sw
 ![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/34407628/155827449-f63f49cc-85fc-4a2a-8218-6e4f128bab73.gif)
 ```jsx
 <CustomSwitch 
-  switchLeftText={"Tea"}
-  switchLeftTextStyle={{color: 'green', fontSize: 24}}
-  switchRightText={"Coffee"}
-  switchRightTextStyle={{color: 'brown', fontSize: 24}}
+  buttonText={'Hello'}
+  onSwitchButtonText={'Bye'}
 />
 ```
 
@@ -78,8 +76,8 @@ Provide a callback function to ```onSwitch()``` which will be called when the sw
 ![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/34407628/155827223-40a82499-ae10-4d09-9ff7-c6cfdace0200.gif)  
 ```jsx
 <CustomSwitch 
-  buttonText={'Hello'}
-  onSwitchButtonText={'Bye'}
+  switchLeftText={"☀️"}
+  switchRightText={"🌙"}
 />
 ```
 Props | Description | Example | Default | 
