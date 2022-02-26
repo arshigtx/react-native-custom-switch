@@ -82,51 +82,28 @@ Provide a callback function to ```onSwitch()``` which will be called when the sw
   onSwitchButtonText={'Bye'}
 />
 ```
-## Props Reference
-Props | Description | Default | 
---- | --- | --- |
-buttonWidth | 301 | 20 | 
---- | --- | --- |
-buttonPadding | 301 | 0 | 
---- | --- | --- |
-buttonColor | 301 | 0 | 
---- | --- | --- |
-buttonBorderWidth | 301 | 0 | 
---- | --- | --- |
-buttonBorderColor | 301 | 0 | 
---- | --- | --- |
-buttonText | 301 | 0 | 
---- | --- | --- |
-buttonTextStyle | 301 | 0 |
---- | --- | --- |
-switchWidth | 301 | 0 |
---- | --- | --- |
-switchBackgroundColor | 301 | 0 |
---- | --- | --- |
-switchBorderWidth | 301 | 0 |
---- | --- | --- |
-switchBorderColor | 301 | 0 |
---- | --- | --- |
-switchLeftText | 301 | 0 |
---- | --- | --- |
-switchLeftTextStyle | 301 | 0 |
---- | --- | --- |
-switchRightText | 301 | 0 |
---- | --- | --- |
-switchRightTextStyle | 301 | 0 |
---- | --- | --- |
-onSwitch | 301 | 0 |
---- | --- | --- |
-onSwitchReverse | 301 | 0 |
---- | --- | --- |
-onSwitchButtonText | 301 | 0 |
---- | --- | --- |
-onSwitchButtonTextStyle | 301 | 0 |
---- | --- | --- |
-onSwitchBackgroundColor | 301 | 0 |
---- | --- | --- |
-animationSpeed | 301 | 0 |
---- | --- | --- |
-startOnLeft | 301 | 0 |
---- | --- | --- |
-disabled | 301 | 0 |
+Props | Description | Example | Default | 
+--- | --- | --- | --- |
+buttonWidth | Adjusts the width of the button. | ```buttonWidth={20}``` | ```20``` |
+buttonPadding | Adjusts the amount of padding around the button. | ```buttonPadding={5}``` | ```undefined``` |
+buttonColor | Adjusts the color of the button. | ```buttonColor={'#FFFFFF'}``` | ```#FFFFFF``` |
+buttonBorderWidth | Adjusts the width of the button border. | ```buttonBorderWidthbuttonBorderWidth={1}``` | ```undefined``` |
+buttonBorderColor | Adjusts the color of the button border. | ```buttonBorderColor={'#D4EDE1'}``` | ```undefined``` |
+buttonText | Defines the text that will appear inside of the button. | ```buttonText={"On"}``` | ```undefined``` |
+buttonTextStyle | Adjusts the style of the text inside of the button. | ```buttonTextStyle={{fontSize: 18}}``` | ```undefined``` |
+switchWidth | Adjust the total width of the switch. | ```switchWidth={75}``` | ```50``` |
+switchBackgroundColor | Adjusts the background color of the switch. | ```switchBackgroundColor={'#0f2832'}``` | ```#D4EDE1``` |
+switchBorderWidth | Adjusts the width of the switch border. | ```switchBorderWidth={2}``` | ```undefined``` |
+switchBorderColor |  Adjusts the color of the switch border. | ```switchBorderColor={'#0f2832'}``` | ```undefined``` |
+switchLeftText | Defines the text that appears on the left side of the switch. | ```switchLeftText={'On'}``` | ```undefined``` |
+switchLeftTextStyle | Adjusts the style of the text on the left side of the switch. | ```switchLeftTextStyle={{fontSize: 18}}``` | ```undefined``` |
+switchRightText |  Defines the text that appears on the right side of the switch | ```switchRightText={'Off}``` | ```undefined``` |
+switchRightTextStyle | Adjusts the style of the text on the right side of the switch. | ```switchRightTextStyle={{fontSize: 18}}``` |```undefined``` |
+onSwitch | Takes a callback that is called when the switch is pressed. | ```onSwitch={() => changeTheme}``` | ```undefined``` |
+onSwitchReverse | Takes a callback that is called when the switch position is reversed. | ```onSwitchReverse={() => sayHello()}``` | ```undefined``` |
+onSwitchButtonText | Defines the text that will appear in the button when the switch is pressed. | ```onSwitchButtonText``` | ```undefined``` |
+onSwitchButtonTextStyle | Adjusts the style of the text in the button when the switch is pressed. | ```onSwitchButtonTextStyle={{fontSize: 18}}``` |```undefined``` |
+onSwitchBackgroundColor | Adjusts the background color of the switch when the switch is pressed. | ```onSwitchBackgroundColor={'#0f2832'}``` | ```undefined``` |
+animationSpeed | Adjuts the speed of the animation when the switch is pressed.  | ```animationSpeed={50}``` | ```150``` | 
+startOnLeft | Changes the start position of the switch to the right side. | ```startOnLeft={true}``` | ```false``` |
+disabled | Prevents the switch from being pressed. | ```disabled={true}``` | ```false``` |
