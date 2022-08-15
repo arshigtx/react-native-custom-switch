@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, Text, TouchableWithoutFeedback, Animated, LayoutAnimation, Platform, UIManager } from 'react-native';
 
-import hexToRgb from './hexToRgb';
+import hexToRgb from './utils';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
