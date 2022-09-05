@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, Text, TouchableWithoutFeedback, Animated, LayoutAnimation, Platform, UIManager } from 'react-native';
 
-import hexToRgb from './hexToRgb';
+import hexToRgb from './utils';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -52,7 +52,7 @@ export default function CustomSwitch({
       LayoutAnimation.configureNext(
         LayoutAnimation.create(
           animationSpeed ? animationSpeed : defaultValues.animationSpeed, 
-          LayoutAnimation.Types.Spring,
+          LayoutAnimation.Types.easeOut,
           LayoutAnimation.Properties.opacity
         )
       )
